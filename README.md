@@ -53,7 +53,7 @@ Collection of RTAI test results.
 
 ## Test results
 
-1. [abbott](abbott-rtai-5.1-4.4.115-2018/report.md)
-2. [mule](mule-rtai-5.1-4.4.115-2018/report.md)
-
-
+| machine                                                                | mean jitter | stdev | max  |
+|------------------------------------------------------------------------|------------:|------:|-----:|
+| [abbott-rtai-5.1-4.4.115-2018](abbott-rtai-5.1-4.4.115-2018/report.md) |         231 |   122 | 1713 |
+| [mule-rtai-5.1-4.4.115-2018](mule-rtai-5.1-4.4.115-2018/report.md)     |         252 |   196 | 4476 |
