@@ -5,8 +5,9 @@ Collection of RTAI test results.
 
 ## Instructions
 
- 1. Clone into the same directory [makertai](https://github.com/relacs/makertai)
-    and [rtaitests](https://github.com/relacs/rtaitests.git):
+ 1. Clone [makertai](https://github.com/relacs/makertai) and
+    [rtaitests](https://github.com/relacs/rtaitests.git) into the same
+    directory:
     ```
     git clone https://github.com/relacs/makertai
     git clone https://github.com/relacs/rtaitests

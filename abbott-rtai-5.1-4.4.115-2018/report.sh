@@ -3,6 +3,8 @@
 DIR=$(dirname $0)
 source "$DIR/../report_tools.sh"
 
+performance_summary $DIR/latencies-*
+
 {
 # General information:
 FILE=$(ls $DIR/latencies-* | head -n 1)

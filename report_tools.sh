@@ -71,3 +71,18 @@ function performance_data {
     echo
     echo
 }
+
+
+function performance_summary {
+    SHOW_COLUMNS=(
+	data:machine
+	data:num
+	kern_latencies:mean_jitter
+	kern_latencies:stdev
+	kern_latencies:max
+    )
+
+    MACHINE=$(cd ${1%/*}; basename $PWD)
+
+    $DIR/../../makertai/makertaikernel.sh report -f md ${SHOW_COLUMNS[@]/#/--select } --add "machine=[$MACHINE]($MACHINE/report.md)" -u avg $@ > summary.md
+}
