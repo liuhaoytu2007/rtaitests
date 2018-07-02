@@ -31,12 +31,12 @@ lines = []
 with open('README.md', 'r') as sf:
     for line in sf:
         lines.append( line )
-        if '-----------' in line:
+        if 'Click on the machine link for details' in line:
             break
 
 # write file:
 with open('README.md', 'w') as df:
     df.write(''.join(lines))
-    df.write('\n## Test results\n\n')
+    df.write('\n')
     dt.write(df, units='none', table_format='md')
 

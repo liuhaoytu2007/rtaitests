@@ -54,9 +54,12 @@ Collection of RTAI test results.
     git push origin master
     ```
 
---------------------------------------------------------------------------
-
 ## Test results
+
+Mean, standard deviation and the maximum value of the jitter (`lat max
+- lat min`) of the kern/latency tests in nanoseconds.
+
+Click on the machine link for details.
 
 | machine                                                                | mean jitter | stdev | max  |
 |------------------------------------------------------------------------|------------:|------:|-----:|
