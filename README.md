@@ -41,9 +41,14 @@ Collection of RTAI test results.
     ./report.sh
     ```
 
- 7. Add your files to the git repository, commit and push:
+ 7. Update the test summary:
     ```
     cd ..
+    python summary.py
+    ```
+
+ 8. Add your files to the git repository, commit and push:
+    ```
     git add HOSTNAME-RTAIVERSION-LINUXKERNEL/
     git commit -a -m 'added test results for HOSTNAME-RTAIVERSION-LINUXKERNEL'
     git push origin master
