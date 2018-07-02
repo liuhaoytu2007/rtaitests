@@ -67,7 +67,7 @@ function performance_data {
     echo
     $DIR/../../makertai/makertaikernel.sh report -f md ${SHOW_COLUMNS[@]/#/--select } -s "$SORTCOL" -g $DIR/$PLOTFILE -u -m 'none' $@ | sed -e 's/ jitter//'
     echo
-    echo "![$PLOTFILE]($PLOTFILE)\\"
+    echo "![$PLOTFILE]($PLOTFILE)"
     echo
     echo
 }

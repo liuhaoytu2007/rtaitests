@@ -24,7 +24,7 @@ Reported is the mean, standard deviation and the maximum value of the jitter (`l
 | none     |         537 |   239 | 4322 |
 | 1        |         252 |   196 | 4476 |
 
-![idle.png](idle.png)\
+![idle.png](idle.png)
 
 
 ### Full load
@@ -34,6 +34,6 @@ Reported is the mean, standard deviation and the maximum value of the jitter (`l
 | none     |        5539 |   737 | 10272 |
 | 1        |        5567 |   426 |  7839 |
 
-![full.png](full.png)\
+![full.png](full.png)
 
 
