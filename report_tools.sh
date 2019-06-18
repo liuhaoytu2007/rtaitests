@@ -2,20 +2,30 @@
 
 function hardware_summary {
     FILE="$1"
+    shift
     HOSTNAME=$(awk -F ':[ \t]*' '/Hostname/ {print $2}' $FILE)
     DATE=$(awk -F ':[ \t]*' '/Date/ {print $2}' $FILE)
     LINUX=$(awk -F ':[ \t]*' '/Description/ {print $2}' $FILE)
     CPU=$(awk -F ':[ \t]*' '/model name/ {print $2}' $FILE)
     read KERNEL RTAI PATCH < <(sed -n -e '/Versions/,/^$/{/kernel/p; /rtai/p; /patch/p}' $FILE | awk -F ': ' '{print $2}' | awk '{printf( "%s ", $1 )}')
     read MBPRODUCT MBVENDOR MBVERSION < <(sed -n -e '/\*-core/,/\*-/{/product/p; /vendor/p; /version/p}' $FILE | awk -F ': ' '{printf( "%s ", $2)}')
+    KERNELCFG=": [kernel configuration](${1##*/})"
+    CFGFILE=$1
+    for CF in $@; do
+	if ! diff -q $CFGFILE $CF; then
+	    KERNELCFG=""
+	    break
+	fi
+    done
+    
 
     echo "# ${HOSTNAME}: ${RTAI} on ${KERNEL} linux kernel"
     echo
     echo "tested on ${DATE}"
     echo
-    echo "## Machine"
+    echo "## Kernel and machine"
     echo
-    echo "Linux kernel version *${KERNEL}* patched with *${PATCH}* of *${RTAI}*"
+    echo "Linux kernel version *${KERNEL}* patched with *${PATCH}* of *${RTAI}*${KERNELCFG}"
     echo
     echo "*${CPU}* on a *${MBVENDOR} ${MBPRODUCT}* motherboard (version *${MBVERSION}*)"
     echo
@@ -61,6 +71,7 @@ function performance_data {
 	kern_latencies:mean_jitter
 	kern_latencies:stdev
 	kern_latencies:max
+	tests:link
     )
 
     echo "### $TITLE"

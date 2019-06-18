@@ -74,6 +74,6 @@ Click on the machine link for details.
 
 | machine                                                                | mean jitter | stdev | max  |
 |------------------------------------------------------------------------|------------:|------:|-----:|
+| [horse-rtai-5.2-4.4.176-2019](horse-rtai-5.2-4.4.176-2019/report.md)   |         218 |   182 | 3680 |
 | [abbott-rtai-5.1-4.4.115-2018](abbott-rtai-5.1-4.4.115-2018/report.md) |         231 |   122 | 1713 |
 | [mule-rtai-5.1-4.4.115-2018](mule-rtai-5.1-4.4.115-2018/report.md)     |         252 |   196 | 4476 |
-| [horse-rtai-5.2-4.4.176-2019](horse-rtai-5.2-4.4.176-2019/report.md)   |         218 |   182 | 3680 |
