@@ -9,7 +9,7 @@ performance_summary $DIR/latencies-*
 # General information:
 FILE=$(ls $DIR/latencies-* | head -n 1)
 hardware_summary $FILE $DIR/config-*
-kernel_parameter $FILE
+#kernel_parameter $FILE
 performance_header $FILE
 
 # Comparison of selected test results:

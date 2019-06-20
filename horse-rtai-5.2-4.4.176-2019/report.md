@@ -1,17 +1,12 @@
-Files ./config-horse-rtai-5.2-4.4.176-039-2019-06-18-poll-tscreliable-plain-cpu1-idle-perfect and ./config-horse-rtai-5.2-4.4.176-053-2019-06-19-allacpi-tscreliable-isolcpus1-poll-cpu1-idle-good differ
 # horse: rtai-5.2 on 4.4.176 linux kernel
 
 tested on 2019-06-18
 
-## Kernel and machine
+## RTAI-patched linux kernel and machine
 
 Linux kernel version *4.4.176* patched with *hal-linux-4.4.176-x86-14.patch* of *rtai-5.2*
 
 *Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz* on a *FUJITSU D3161-A1* motherboard (version *S26361-D3161-A1*)
-
-## Kernel parameter:
-* idle=poll
-* tsc=reliable
 
 ## Performance
 
@@ -19,6 +14,13 @@ kern/latency test for 1983 seconds.
 Reported is the mean, standard deviation and the maximum value of the jitter (`lat max - lat min`) in nanoseconds.
 
 ### No ACPI idle machine
+
+[kernel configuration](config-horse-rtai-5.2-4.4.176-039-2019-06-18-poll-tscreliable-plain-cpu1-idle-perfect)
+
+Kernel parameter:
+* idle=poll
+* tsc=reliable
+* isolcpus=1
 
 | isolcpus | mean | stdev | max  | link                                                                                                      |
 |----------|------------:|------:|-----:|-----------------------------------------------------------------------------------------------------------|
@@ -30,6 +32,13 @@ Reported is the mean, standard deviation and the maximum value of the jitter (`l
 
 ### No ACPI full load
 
+[kernel configuration](config-horse-rtai-5.2-4.4.176-040-2019-06-18-poll-tscreliable-plain-cpu1-cimn-good)
+
+Kernel parameter:
+* idle=poll
+* tsc=reliable
+* isolcpus=1
+
 | isolcpus | mean | stdev | max  | link                                                                                                      |
 |----------|------------:|------:|-----:|-----------------------------------------------------------------------------------------------------------|
 | none     |        3428 |   606 | 6501 | [test details](latencies-horse-rtai-5.2-4.4.176-040-2019-06-18-poll-tscreliable-plain-cpu1-cimn-good)     |
@@ -39,6 +48,12 @@ Reported is the mean, standard deviation and the maximum value of the jitter (`l
 
 
 ### Full ACPI idle machine
+
+[kernel configuration](config-horse-rtai-5.2-4.4.176-053-2019-06-19-allacpi-tscreliable-isolcpus1-poll-cpu1-idle-good)
+
+Kernel parameter:
+* tsc=reliable
+* isolcpus=1
 
 | latency | mean | stdev | max  | link                                                                                                                               |
 |---------|------------:|------:|-----:|------------------------------------------------------------------------------------------------------------------------------------|
@@ -50,6 +65,12 @@ Reported is the mean, standard deviation and the maximum value of the jitter (`l
 
 
 ### Full ACPI full load
+
+[kernel configuration](config-horse-rtai-5.2-4.4.176-054-2019-06-19-allacpi-tscreliable-isolcpus1-poll-cpu1-cimn-good)
+
+Kernel parameter:
+* tsc=reliable
+* isolcpus=1
 
 | latency | mean | stdev | max   | link                                                                                                                             |
 |---------|------------:|------:|------:|----------------------------------------------------------------------------------------------------------------------------------|

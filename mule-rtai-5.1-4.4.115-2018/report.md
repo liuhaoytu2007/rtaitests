@@ -2,7 +2,7 @@
 
 tested on 2018-06-14
 
-## Kernel and machine
+## RTAI-patched linux kernel and machine
 
 Linux kernel version *4.4.115* patched with *hal-linux-4.4.115-x86-10.patch* of *rtai-5.1*: [kernel configuration](config-4.4.115-rtai-5.1-mule-019-2018-06-14-polltscrel-plain-cpu1-idle-good)
 
@@ -19,6 +19,13 @@ Reported is the mean, standard deviation and the maximum value of the jitter (`l
 
 ### Idle machine
 
+[kernel configuration](config-4.4.115-rtai-5.1-mule-019-2018-06-14-polltscrel-plain-cpu1-idle-good)
+
+Kernel parameter:
+* idle=poll
+* tsc=reliable
+* isolcpus=1
+
 | isolcpus | mean | stdev | max  | link                                                                                               |
 |----------|------------:|------:|-----:|----------------------------------------------------------------------------------------------------|
 | none     |         537 |   239 | 4322 | [test details](latencies-4.4.115-rtai-5.1-mule-019-2018-06-14-polltscrel-plain-cpu1-idle-good)     |
@@ -28,6 +35,13 @@ Reported is the mean, standard deviation and the maximum value of the jitter (`l
 
 
 ### Full load
+
+[kernel configuration](config-4.4.115-rtai-5.1-mule-020-2018-06-14-polltscrel-plain-cpu1-cimn-ok)
+
+Kernel parameter:
+* idle=poll
+* tsc=reliable
+* isolcpus=1
 
 | isolcpus | mean | stdev | max   | link                                                                                               |
 |----------|------------:|------:|------:|----------------------------------------------------------------------------------------------------|

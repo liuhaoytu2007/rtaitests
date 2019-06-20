@@ -12,7 +12,7 @@ function hardware_summary {
     KERNELCFG=": [kernel configuration](${1##*/})"
     CFGFILE=$1
     for CF in $@; do
-	if ! diff -q $CFGFILE $CF; then
+	if ! diff -q $CFGFILE $CF &> /dev/null; then
 	    KERNELCFG=""
 	    break
 	fi
@@ -23,7 +23,7 @@ function hardware_summary {
     echo
     echo "tested on ${DATE}"
     echo
-    echo "## Kernel and machine"
+    echo "## RTAI-patched linux kernel and machine"
     echo
     echo "Linux kernel version *${KERNEL}* patched with *${PATCH}* of *${RTAI}*${KERNELCFG}"
     echo
@@ -74,7 +74,23 @@ function performance_data {
 	tests:link
     )
 
+    KERNELCFG="[kernel configuration](config${1##*/latencies})"
+    CFGFILE=${1/latencies-/config-}
+    for CF in $@; do
+	if ! diff -q $CFGFILE ${CF/latencies-/config-} &> /dev/null; then
+	    KERNELCFG=""
+	    break
+	fi
+    done
+
     echo "### $TITLE"
+    echo
+    if test -n "$KERNELCFG"; then
+	echo "$KERNELCFG"
+	echo
+    fi
+    echo "Kernel parameter:"
+    sed -n -e '/Kernel parameter/,/^$/{s/^  //; p}' "${@: -1}" | sed -e '1d; /BOOT/d; /^root/d; /^ro$/d; /^quiet/d; /^splash/d; /^vt.handoff/d; /panic/d;' | while read LINE; do test -n "$LINE" && echo "* $LINE"; done
     echo
     $DIR/../../makertai/makertaikernel.sh report -f md ${SHOW_COLUMNS[@]/#/--select } -s "$SORTCOL" -g $DIR/$PLOTFILE -u -m 'none' $@ | sed -e 's/ jitter//'
     echo
